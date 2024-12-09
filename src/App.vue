@@ -553,7 +553,7 @@ const processarPagamentoCartao = async (presente) => {
     carregandoPix.value = true
     erroPix.value = null
 
-    const response = await fetch('http://localhost:3000/gerar-pagamento-cartao', {
+    const response = await fetch('https://jn-casamento-back.vercel.app/gerar-pagamento-cartao', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -571,9 +571,9 @@ const processarPagamentoCartao = async (presente) => {
     window.open(data.init_point, '_blank')
 
     // Abre o modal de confirmação após redirecionar
-    setTimeout(() => {
+    /* setTimeout(() => {
       abrirModalConfirmacao()
-    }, 1000)
+    }, 1000) */
   } catch (error) {
     console.error('Erro ao processar pagamento:', error)
     alert('Erro ao processar pagamento. Por favor, tente novamente.')
@@ -588,7 +588,7 @@ const mostrarPix = async (presente) => {
     erroPix.value = null;
     dadosPix.value = null;
 
-    const response = await fetch('http://localhost:3000/gerar-pix', {
+    const response = await fetch('https://jn-casamento-back.vercel.app/gerar-pix', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
