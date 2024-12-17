@@ -498,8 +498,8 @@ const presentes = ref(shuffle([
   {
     id: 19,
     nome: 'Torradeira',
-    valor: 200,
-    imagem: 'https://www.amazon.com.br/Electrolux-4310AOBR507-Torradeira-ETS25/dp/B09CBT3BY5/ref=asc_df_B09CBT3BY5/?tag=googleshopp00-20&linkCode=df0&hvadid=709870389015&hvpos=&hvnetw=g&hvrand=17268272983799804496&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9101955&hvtargid=pla-1643049662096&psc=1&mcid=92bef04db10835bcb10a3738ac2e7957&gad_source=4',
+    valor: 360,
+    imagem: 'https://m.media-amazon.com/images/I/51pcpIXaj0L._AC_SL1000_.jpg',
     comprado: false
   },
   {
