@@ -457,7 +457,7 @@ const presentes = ref(shuffle([
     id: 13,
     nome: 'Panela de Pressão',
     valor: 450,
-    imagem: 'https://a-static.mlcdn.com.br/1500x1500/panela-de-pressao-fast-cereja-antiaderente-bege-fechamento-externo-cozimento-rapido-aluminio-nacional-45-litros/nacionalutilidadesdomesticas/15960713011/d0a1797040f06e78eaacc644f1cdd84b.jpeg',
+    imagem: 'https://brinox.vteximg.com.br/arquivos/ids/276516-1200-800/nova-foto-panela-de-pressao-botanika.png?v=638666680127930000',
     comprado: false
   },
   {
@@ -513,7 +513,7 @@ const presentes = ref(shuffle([
     id: 21,
     nome: 'Kit Potes Herméticos',
     valor: 300,
-    imagem: 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRu-mwp2B0r1zyZmvSeix5igQmVyYRzZCg-kBelJtx1gUEq-wgvrL_N4TMDT-ZkgbUulwGo115hFpzVSz0eE9tP8RNcoBIQ2kiz7foy26fGnOsGwZwemm_Qaxhoy_6ltg&usqp=CAc',
+    imagem: 'https://m.media-amazon.com/images/I/71GkZaavtPL._AC_SL1200_.jpg',
     comprado: false
   },
   {
@@ -847,9 +847,9 @@ const presentes = ref(shuffle([
   },
   {
     id: 72,
-    nome: 'Celular novo',
+    nome: 'Celular',
     valor: 4000,
-    imagem: 'https://www.amazon.com.br/Smartphone-Samsung-Galaxy-256GB-Infinita/dp/B0CBCP5ZWC/ref=sr_1_7?__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3K6QHNT2JNVKT&dib=eyJ2IjoiMSJ9.VXxD3euS8enk52qej8_FDam7TwWHZywOv0vIncIyfbxLCJn5UfwRXlvNklZZWipmggjE1t87RsPUwKUTPS4_U3TNexv5RTERyJ0eZdJ8YVQM6_UWA-pHFqTBBXu-sKcGthcnuqCSn6OkEsihxtfsrHJIfsSj0w0-RTlj1cOc_nzx-KkGNOK85q173T3ivaTvnwi_OvwvmeZqaQP67-Xx6giRion8YqXSqdTVaaxdHByUj-lnKJET50F0acYitYHqR0VRctnIjvyDbkWxjmqjaVlnXGahT_NNQ0PyrBLUG5I.F4TAC1R94bRE9Iu1hRfjwTjV9qsf1jRiTBrSfUBjO-o&dib_tag=se&keywords=galaxy+s23&qid=1734453624&sprefix=galaxy+s2%2Caps%2C258&sr=8-7',
+    imagem: 'https://m.media-amazon.com/images/I/51LrNKMk9dL._AC_SL1000_.jpg',
     comprado: false
   },
 ]))
