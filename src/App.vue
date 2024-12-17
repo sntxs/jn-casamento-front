@@ -124,6 +124,17 @@
     <section id="presentes" class="presentes py-5">
       <div class="container">
         <h2 class="text-center mb-5">Presentes que podem nos dar</h2>
+        
+        <!-- Adicione o campo de pesquisa -->
+        <div class="search-container mb-4">
+          <input 
+            type="text" 
+            class="form-control search-input" 
+            placeholder="Pesquisar presente..." 
+            v-model="termoPesquisa"
+          >
+        </div>
+
         <div class="text-center mt-4">
           <button class="btn btn-secondary me-2" @click="paginaAnterior" :disabled="paginaAtual === 0">
             Anterior
@@ -178,7 +189,7 @@
               <p class="mt-2">Gerando QR Code...</p>
             </div>
 
-            <!-- QR Code e Informações -->
+            <!-- QR Code e Informaç��es -->
             <div v-else-if="dadosPix">
               <img :src="`data:image/png;base64,${dadosPix.qrCodeBase64}`" alt="QR Code PIX" class="img-fluid mb-3"
                 style="max-width: 250px;">
@@ -343,7 +354,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 import { Modal } from 'bootstrap'
 
 // Função para embaralhar a lista de presentes
@@ -361,675 +372,486 @@ const presentes = ref(shuffle([
   {
     id: 1,
     nome: 'TV 50 polegadas',
-    valor: 2499,
-    imagem: 'https://picsum.photos/300/200?random=1',
+    valor: 3000,
+    imagem: 'https://m.media-amazon.com/images/I/51O+lnoMUUL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 2,
-    nome: 'Geladeira 450L',
-    valor: 3999,
-    imagem: 'https://picsum.photos/300/200?random=2',
+    nome: 'Geladeira',
+    valor: 6000,
+    imagem: 'https://gazin-images.gazin.com.br/Mvn8MOx_yKllhSpto8otmYlEEks=/828x/filters:format(webp):quality(75)/https://gazin-images.gazin.com.br/z3vJ2GhmkGQNtrqGCQr_W8ZD-7o=/filters:format(webp):quality(75)/https://gazin-marketplace.s3.amazonaws.com/midias/imagens/2023/09/geladeira-refrigerador-consul-450l-frost-free-duplex-filtro-antiodor-crm56fk-132309370130.jpg',
     comprado: false
   },
   {
     id: 3,
     nome: 'Fogão Inox 4 Bocas',
-    valor: 1299,
-    imagem: 'https://picsum.photos/300/200?random=3',
+    valor: 3000,
+    imagem: 'https://a-static.mlcdn.com.br/1500x1500/fogao-4-bocas-electrolux-prata-efficient-perfectcook-fe4is/magazineluiza/237654700/0c6fe25b4c2272e0310335d5d97bcba1.jpg',
     comprado: false
   },
   {
     id: 4,
     nome: 'Ar Condicionado 9000 BTUs',
-    valor: 1599,
-    imagem: 'https://picsum.photos/300/200?random=4',
+    valor: 2000,
+    imagem: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSLJgsa96Jc4WmRdXB1_ZRM_ZTj72yP-RJPwl6099oCPpgtBSrKrv3vbHEyjh9b9FIDy-yWrxq8wyKHGPtOQkfinG3Qd4uFK4xCxAwpkk6L&usqp=CAE',
     comprado: false
   },
   {
     id: 5,
     nome: 'Ar Condicionado 12000 BTUs',
-    valor: 1899,
-    imagem: 'https://picsum.photos/300/200?random=5',
+    valor: 2100,
+    imagem: 'https://m.media-amazon.com/images/I/51Ap48E9JDL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 6,
     nome: 'Colchão Box Casal King Size',
-    valor: 2999,
-    imagem: 'https://picsum.photos/300/200?random=6',
+    valor: 5000,
+    imagem: 'https://imgs.casasbahia.com.br/55060577/1g.jpg',
     comprado: false
   },
   {
     id: 7,
     nome: 'Sofá Retrátil 3 Lugares Bege',
-    valor: 2499,
-    imagem: 'https://picsum.photos/300/200?random=7',
+    valor: 3500,
+    imagem: 'https://static.mobly.com.br/r/2000x2000/p/Mobly-SofC3A1-3-Lugares-RetrC3A1til-e-ReclinC3A1vel-Lupin-Velosuede-Bege-7102-0491811-1.jpg?_gl=1*wh3019*_gcl_aw*R0NMLjE3MzQ0NDgzMTAuQ2p3S0NBaUEzNFM3QmhBdEVpd0FDWnp2NFZrSDgyNXJHRDJBS19qaUs4TVk5NmhSY0dVaVp1UE1yd3Q0RGV4NnAtQ3k3WjFnZkY1c1F4b0NfZjBRQXZEX0J3RQ..*_ga*MTg4NjE0MTkzMi4xNzM0NDQ4MzEw*_ga_52S02DHY6L*MTczNDQ0ODMxMC4xLjAuMTczNDQ0ODMxMS41OS4wLjA.',
     comprado: false
   },
   {
     id: 8,
     nome: 'Painel de TV Branco com Madeira Clara',
-    valor: 899,
-    imagem: 'https://picsum.photos/300/200?random=8',
+    valor: 1700,
+    imagem: 'https://static.mobly.com.br/r/2000x2000/p/Modern-Painel-para-TV-atC3A9-60-Polegadas-Roma-Branco-e-Cedro-6709-5708521-1.jpg?_gl=1*1y2kpgz*_gcl_aw*R0NMLjE3MzQ0NDgzMzguQ2p3S0NBaUEzNFM3QmhBdEVpd0FDWnp2NFZrSDgyNXJHRDJBS19qaUs4TVk5NmhSY0dVaVp1UE1yd3Q0RGV4NnAtQ3k3WjFnZkY1c1F4b0NfZjBRQXZEX0J3RQ..*_gcl_au*MTMwNjI0ODMxMy4xNzM0NDQ4MzEy*_ga*MTg4NjE0MTkzMi4xNzM0NDQ4MzEw*_ga_52S02DHY6L*MTczNDQ0ODMxMC4xLjEuMTczNDQ0ODQwMS41OS4wLjA.',
     comprado: false
   },
   {
     id: 9,
     nome: 'Batedeira',
-    valor: 299,
-    imagem: 'https://picsum.photos/300/200?random=9',
+    valor: 600,
+    imagem: 'https://a-static.mlcdn.com.br/1500x1500/batedeira-planetaria-mondial-preto-e-inox-700w-premium-12-velocidades/magazineluiza/021259300/69394484e36b1df50d18ce8ee8deac76.jpg',
     comprado: false
   },
   {
     id: 10,
     nome: 'Liquidificador',
-    valor: 199,
-    imagem: 'https://picsum.photos/300/200?random=10',
+    valor: 400,
+    imagem: 'https://noivos.casar.com/img/presentes/shopping-camicado/Liquidificador_Super_Chef.jpg',
     comprado: false
   },
   {
     id: 11,
     nome: 'Mixer',
-    valor: 129,
-    imagem: 'https://picsum.photos/300/200?random=11',
+    valor: 400,
+    imagem: 'https://m.media-amazon.com/images/I/51pdYg3ULPL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 12,
     nome: 'Jogo de Panelas',
-    valor: 599,
-    imagem: 'https://picsum.photos/300/200?random=12',
+    valor: 800,
+    imagem: 'https://m.media-amazon.com/images/I/61AjgTFEaRL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 13,
     nome: 'Panela de Pressão',
-    valor: 199,
-    imagem: 'https://picsum.photos/300/200?random=13',
+    valor: 450,
+    imagem: 'https://a-static.mlcdn.com.br/1500x1500/panela-de-pressao-fast-cereja-antiaderente-bege-fechamento-externo-cozimento-rapido-aluminio-nacional-45-litros/nacionalutilidadesdomesticas/15960713011/d0a1797040f06e78eaacc644f1cdd84b.jpeg',
     comprado: false
   },
   {
     id: 14,
     nome: 'Panela de Arroz Elétrica',
-    valor: 249,
-    imagem: 'https://picsum.photos/300/200?random=14',
+    valor: 600,
+    imagem: 'https://imgs.casasbahia.com.br/55066647/1g.jpg',
     comprado: false
   },
   {
     id: 15,
     nome: 'Faqueiro Completo',
-    valor: 399,
-    imagem: 'https://picsum.photos/300/200?random=15',
+    valor: 420,
+    imagem: 'https://m.media-amazon.com/images/I/61viHSB7i4L._AC_SX679_.jpg',
     comprado: false
   },
   {
     id: 16,
     nome: 'Conjunto de Pratos e Talheres',
-    valor: 499,
-    imagem: 'https://picsum.photos/300/200?random=16',
+    valor: 510,
+    imagem: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTtnq5GQeXBAK9kEV1SyoddhMYgPeAagNS_YZkS4W9CQg-c0ThT6USRD2N_BqjAycuPKaXHDwiYYy3m9MZ8k1X4WWIbiXXve1Wm5CLOXqI0qGT6Uyq3NaIx&usqp=CAE',
     comprado: false
   },
   {
     id: 17,
     nome: 'Jogo de Copos Completo',
-    valor: 299,
-    imagem: 'https://picsum.photos/300/200?random=17',
+    valor: 300,
+    imagem: 'https://imgs.extra.com.br/1563534874/1xg.jpg',
     comprado: false
   },
   {
     id: 18,
     nome: 'Cafeteira',
-    valor: 249,
-    imagem: 'https://picsum.photos/300/200?random=18',
+    valor: 500,
+    imagem: 'https://m.media-amazon.com/images/I/51rsO-NkHVL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 19,
     nome: 'Torradeira',
-    valor: 149,
-    imagem: 'https://picsum.photos/300/200?random=19',
+    valor: 200,
+    imagem: 'https://www.amazon.com.br/Electrolux-4310AOBR507-Torradeira-ETS25/dp/B09CBT3BY5/ref=asc_df_B09CBT3BY5/?tag=googleshopp00-20&linkCode=df0&hvadid=709870389015&hvpos=&hvnetw=g&hvrand=17268272983799804496&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9101955&hvtargid=pla-1643049662096&psc=1&mcid=92bef04db10835bcb10a3738ac2e7957&gad_source=4',
     comprado: false
   },
   {
     id: 20,
     nome: 'Air Fryer',
-    valor: 499,
-    imagem: 'https://picsum.photos/300/200?random=20',
+    valor: 500,
+    imagem: 'https://m.media-amazon.com/images/I/81DHdkzgECL._AC_SL1500_.jpg',
     comprado: false
   },
   {
     id: 21,
     nome: 'Kit Potes Herméticos',
-    valor: 199,
-    imagem: 'https://picsum.photos/300/200?random=21',
+    valor: 300,
+    imagem: 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRu-mwp2B0r1zyZmvSeix5igQmVyYRzZCg-kBelJtx1gUEq-wgvrL_N4TMDT-ZkgbUulwGo115hFpzVSz0eE9tP8RNcoBIQ2kiz7foy26fGnOsGwZwemm_Qaxhoy_6ltg&usqp=CAc',
     comprado: false
   },
   {
     id: 22,
     nome: 'Aparelho de Jantar Formal',
-    valor: 899,
-    imagem: 'https://picsum.photos/300/200?random=22',
+    valor: 900,
+    imagem: 'https://m.media-amazon.com/images/I/81m1ryjy2xL._AC_SL1500_.jpg',
     comprado: false
   },
   {
     id: 23,
     nome: 'Kit Sousplat e Jogos Americanos',
-    valor: 299,
-    imagem: 'https://picsum.photos/300/200?random=23',
+    valor: 199,
+    imagem: 'https://m.media-amazon.com/images/I/716vXxvmvkL._AC_SL1200_.jpg',
     comprado: false
   },
   {
     id: 24,
     nome: 'Jogo de Taças',
-    valor: 399,
-    imagem: 'https://picsum.photos/300/200?random=24',
+    valor: 199,
+    imagem: 'https://m.media-amazon.com/images/I/51CCynfziUL._AC_SL1300_.jpg',
     comprado: false
   },
   {
     id: 25,
-    nome: 'Jogo de Travessas e Tigelas',
+    nome: 'Jogo de Travessas',
     valor: 299,
-    imagem: 'https://picsum.photos/300/200?random=25',
+    imagem: 'https://m.media-amazon.com/images/I/51wQ2UujUnL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 26,
     nome: 'Kit Almofadas Decorativas',
-    valor: 299,
-    imagem: 'https://picsum.photos/300/200?random=26',
+    valor: 99,
+    imagem: 'https://m.media-amazon.com/images/I/81T4JwSX8zL._AC_SL1500_.jpg',
     comprado: false
   },
   {
     id: 27,
     nome: 'Kit Mantas para Sofá',
-    valor: 249,
-    imagem: 'https://picsum.photos/300/200?random=27',
+    valor: 199,
+    imagem: 'https://m.media-amazon.com/images/I/71ArJQncJfL._AC_SL1200_.jpg',
     comprado: false
   },
   {
     id: 28,
-    nome: 'Kit Porta-retratos',
-    valor: 199,
-    imagem: 'https://picsum.photos/300/200?random=28',
+    nome: 'Jogo de Cama Completo',
+    valor: 499,
+    imagem: 'https://m.media-amazon.com/images/I/31TgkyHJ3aL._AC_.jpg',
     comprado: false
   },
   {
     id: 29,
-    nome: 'Aparador de Livros',
-    valor: 149,
-    imagem: 'https://picsum.photos/300/200?random=29',
+    nome: 'Kit Travesseiros',
+    valor: 269,
+    imagem: 'https://m.media-amazon.com/images/I/51g1PznpAdL._AC_SL1200_.jpg',
     comprado: false
   },
   {
     id: 30,
-    nome: 'Jogo de Cama Completo',
-    valor: 599,
-    imagem: 'https://picsum.photos/300/200?random=30',
+    nome: 'Kit Roupões de Banho',
+    valor: 399,
+    imagem: 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-ly8loqdupkt18e.webp',
     comprado: false
   },
   {
     id: 31,
-    nome: 'Kit Travesseiros',
+    nome: 'Jogo de Toalhas Completo',
     valor: 299,
-    imagem: 'https://picsum.photos/300/200?random=31',
+    imagem: 'https://m.media-amazon.com/images/I/71oAKOMXPHL._AC_SL1200_.jpg',
     comprado: false
   },
   {
     id: 32,
-    nome: 'Kit Roupões de Banho',
-    valor: 399,
-    imagem: 'https://picsum.photos/300/200?random=32',
+    nome: 'Kit Tapetes para Banheiro',
+    valor: 99,
+    imagem: 'https://m.media-amazon.com/images/I/61tCtMvwf5L._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 33,
-    nome: 'Jogo de Toalhas Completo',
-    valor: 499,
-    imagem: 'https://picsum.photos/300/200?random=33',
+    nome: 'Cesto de Roupas',
+    valor: 290,
+    imagem: 'https://m.media-amazon.com/images/I/61Ku1AabY7L._AC_SL1200_.jpg',
     comprado: false
   },
   {
     id: 34,
-    nome: 'Kit Tapetes para Banheiro',
-    valor: 199,
-    imagem: 'https://picsum.photos/300/200?random=34',
+    nome: 'Tábua de Passar',
+    valor: 249,
+    imagem: 'https://m.media-amazon.com/images/I/51fe6AxBPkL._AC_SL1200_.jpg',
     comprado: false
   },
   {
     id: 35,
-    nome: 'Kit Organizadores de Bancada',
-    valor: 249,
-    imagem: 'https://picsum.photos/300/200?random=35',
+    nome: 'Ferro de Passar Roupa',
+    valor: 380,
+    imagem: 'https://m.media-amazon.com/images/I/61G0nm+-tuL._AC_SL1500_.jpg',
     comprado: false
   },
   {
     id: 36,
-    nome: 'Cesto de Roupas',
-    valor: 149,
-    imagem: 'https://picsum.photos/300/200?random=36',
+    nome: 'Aspirador de Pó',
+    valor: 399,
+    imagem: 'https://m.media-amazon.com/images/I/71zOYFOSMqL._AC_SL1500_.jpg',
     comprado: false
   },
   {
     id: 37,
-    nome: 'Tábua de Passar',
-    valor: 199,
-    imagem: 'https://picsum.photos/300/200?random=37',
-    comprado: false
-  },
-  {
-    id: 38,
-    nome: 'Ferro de Passar Roupa',
-    valor: 249,
-    imagem: 'https://picsum.photos/300/200?random=38',
+    nome: 'Ventilador de Teto',
+    valor: 650,
+    imagem: 'https://m.media-amazon.com/images/I/41mDrX7RDOL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 39,
-    nome: 'Kit Organizador Multiuso',
-    valor: 299,
-    imagem: 'https://picsum.photos/300/200?random=39',
+    nome: 'Kit Malas de Viagem',
+    valor: 899,
+    imagem: 'https://m.media-amazon.com/images/I/51uIj-rr4tL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 40,
-    nome: 'Aspirador de Pó',
-    valor: 599,
-    imagem: 'https://picsum.photos/300/200?random=40',
+    nome: 'Kit Utensílios para Churrasco',
+    valor: 399,
+    imagem: 'https://m.media-amazon.com/images/I/61TqSpedRgL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 41,
-    nome: 'Ventilador de Coluna',
-    valor: 299,
-    imagem: 'https://picsum.photos/300/200?random=41',
+    nome: 'Caixa de Ferramentas',
+    valor: 500,
+    imagem: 'https://m.media-amazon.com/images/I/81NzamswRGL._AC_SL1500_.jpg',
     comprado: false
   },
   {
     id: 42,
-    nome: 'Mixer de Mão',
-    valor: 149,
-    imagem: 'https://picsum.photos/300/200?random=42',
+    nome: 'Kit Vasos Decorativos',
+    valor: 199,
+    imagem: 'https://m.media-amazon.com/images/I/51x2HiSuBfL._AC_SL1200_.jpg',
     comprado: false
   },
   {
     id: 43,
-    nome: 'Máquina de Waffle',
-    valor: 199,
-    imagem: 'https://picsum.photos/300/200?random=43',
+    nome: 'Micro-ondas',
+    valor: 799,
+    imagem: 'https://m.media-amazon.com/images/I/41AwRmHGdgL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 44,
-    nome: 'Kit Malas de Viagem',
-    valor: 699,
-    imagem: 'https://picsum.photos/300/200?random=44',
-    comprado: false
-  },
-  {
-    id: 45,
-    nome: 'Churrasqueira Portátil',
-    valor: 399,
-    imagem: 'https://picsum.photos/300/200?random=45',
+    nome: 'Máquina Lava e Seca',
+    valor: 5300,
+    imagem: 'https://m.media-amazon.com/images/I/51c2OEek8yL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 46,
-    nome: 'Kit Utensílios para Churrasco',
-    valor: 299,
-    imagem: 'https://picsum.photos/300/200?random=46',
+    nome: 'Lava-louças',
+    valor: 3999,
+    imagem: 'https://m.media-amazon.com/images/I/41nJML+uGVL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 47,
-    nome: 'Caixa de Ferramentas Básica',
-    valor: 249,
-    imagem: 'https://picsum.photos/300/200?random=47',
+    nome: 'Poltrona Decorativa',
+    valor: 599,
+    imagem: 'https://m.media-amazon.com/images/I/51jB6JHIdLL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 48,
-    nome: 'Kit Vasos Decorativos',
-    valor: 399,
-    imagem: 'https://picsum.photos/300/200?random=48',
+    nome: 'Mesa de Centro',
+    valor: 499,
+    imagem: 'https://m.media-amazon.com/images/I/61g5rHAHkJL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 49,
-    nome: 'Forno Elétrico',
-    valor: 799,
-    imagem: 'https://picsum.photos/300/200?random=49',
+    nome: 'Mesa de Jantar com Cadeiras',
+    valor: 2499,
+    imagem: 'https://m.media-amazon.com/images/I/71la68P82wL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 50,
-    nome: 'Micro-ondas',
-    valor: 599,
-    imagem: 'https://picsum.photos/300/200?random=50',
+    nome: 'Aparador de jantar',
+    valor: 1999,
+    imagem: 'https://m.media-amazon.com/images/I/61Lkx54nzlL._AC_SL1280_.jpg',
     comprado: false
   },
   {
     id: 51,
-    nome: 'Máquina de Lavar Roupa',
-    valor: 2499,
-    imagem: 'https://picsum.photos/300/200?random=51',
+    nome: 'Cristaleira',
+    valor: 1699,
+    imagem: 'https://m.media-amazon.com/images/I/41QJK-HZ-AL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 52,
-    nome: 'Máquina de Secar Roupa',
-    valor: 2299,
-    imagem: 'https://picsum.photos/300/200?random=52',
+    nome: 'Guarda-roupa',
+    valor: 3699,
+    imagem: 'https://m.media-amazon.com/images/I/7166gHd7UlL._AC_SL1500_.jpg',
     comprado: false
   },
   {
     id: 53,
-    nome: 'Lava-louças',
-    valor: 2999,
-    imagem: 'https://picsum.photos/300/200?random=53',
+    nome: 'Kit Criados-mudos',
+    valor: 699,
+    imagem: 'https://m.media-amazon.com/images/I/61qnNqfN4dL._AC_SL1200_.jpg',
     comprado: false
   },
   {
     id: 54,
-    nome: 'Poltrona Decorativa',
-    valor: 899,
-    imagem: 'https://picsum.photos/300/200?random=54',
+    nome: 'Cômoda',
+    valor: 1499,
+    imagem: 'https://m.media-amazon.com/images/I/51GAZoIlPBL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 55,
-    nome: 'Kit Puffs Decorativos',
-    valor: 599,
-    imagem: 'https://picsum.photos/300/200?random=55',
+    nome: 'Kit Armários Modulados',
+    valor: 3000,
+    imagem: 'https://m.media-amazon.com/images/I/51wyofG5Z-L._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 56,
-    nome: 'Mesa de Centro',
-    valor: 499,
-    imagem: 'https://picsum.photos/300/200?random=56',
+    nome: 'Espelho com Armário',
+    valor: 699,
+    imagem: 'https://m.media-amazon.com/images/I/61lKu9lwRoL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 57,
-    nome: 'Aparador',
-    valor: 899,
-    imagem: 'https://picsum.photos/300/200?random=57',
+    nome: 'Armário Multiuso',
+    valor: 1890,
+    imagem: 'https://m.media-amazon.com/images/I/41yO6wzapWL._AC_SL1024_.jpg',
     comprado: false
   },
   {
     id: 58,
-    nome: 'Mesa de Jantar com Cadeiras',
-    valor: 2499,
-    imagem: 'https://picsum.photos/300/200?random=58',
+    nome: 'Kit Estantes',
+    valor: 899,
+    imagem: 'https://m.media-amazon.com/images/I/71ydkq07auL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 59,
-    nome: 'Buffet',
-    valor: 1999,
-    imagem: 'https://picsum.photos/300/200?random=59',
-    comprado: false
-  },
-  {
-    id: 60,
-    nome: 'Cristaleira',
-    valor: 1699,
-    imagem: 'https://picsum.photos/300/200?random=60',
+    nome: 'Mesa e Cadeiras de Varanda',
+    valor: 1299,
+    imagem: 'https://m.media-amazon.com/images/I/617Ucgtk4rL._AC_SL1200_.jpg',
     comprado: false
   },
   {
     id: 61,
-    nome: 'Guarda-roupa',
-    valor: 2999,
-    imagem: 'https://picsum.photos/300/200?random=61',
+    nome: 'Churrasqueira a Carvão',
+    valor: 899,
+    imagem: 'https://m.media-amazon.com/images/I/61TGo6xPLdL._AC_SL1200_.jpg',
     comprado: false
   },
   {
     id: 62,
-    nome: 'Kit Criados-mudos',
-    valor: 799,
-    imagem: 'https://picsum.photos/300/200?random=62',
+    nome: 'Guarda-roupas Quarto Extra',
+    valor: 2600,
+    imagem: 'https://m.media-amazon.com/images/I/713lKjBC8UL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 63,
-    nome: 'Penteadeira',
-    valor: 899,
-    imagem: 'https://picsum.photos/300/200?random=63',
+    nome: 'Escrivaninha Home Office',
+    valor: 799,
+    imagem: 'https://m.media-amazon.com/images/I/71vJtkqhn+L._AC_SY300_SX300_.jpg',
     comprado: false
   },
   {
     id: 64,
-    nome: 'Cômoda',
-    valor: 999,
-    imagem: 'https://picsum.photos/300/200?random=64',
+    nome: 'Ventilador',
+    valor: 499,
+    imagem: 'https://m.media-amazon.com/images/I/51rACDpWe8L._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 65,
-    nome: 'Mesa de Café da Manhã',
-    valor: 699,
-    imagem: 'https://picsum.photos/300/200?random=65',
+    nome: 'Kit Porta Temperos',
+    valor: 390,
+    imagem: 'https://m.media-amazon.com/images/I/61OG7XRQh5L._AC_SL1200_.jpg',
     comprado: false
   },
   {
     id: 66,
-    nome: 'Balcão Americano',
-    valor: 899,
-    imagem: 'https://picsum.photos/300/200?random=66',
+    nome: 'Kit Porta Copos',
+    valor: 149,
+    imagem: 'https://m.media-amazon.com/images/I/61O60QJbRzL._AC_.jpg',
     comprado: false
   },
   {
     id: 67,
-    nome: 'Kit Armários Modulados',
-    valor: 2999,
-    imagem: 'https://picsum.photos/300/200?random=67',
+    nome: 'Kit Porta Guardanapos',
+    valor: 79,
+    imagem: 'https://m.media-amazon.com/images/I/61Kvtw5oOkS._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 68,
-    nome: 'Gabinete com Pia',
-    valor: 899,
-    imagem: 'https://picsum.photos/300/200?random=68',
+    nome: 'Jogo de Tigelas',
+    valor: 199,
+    imagem: 'https://m.media-amazon.com/images/I/51hoeyPpjuL._AC_SL1200_.jpg',
     comprado: false
   },
   {
     id: 69,
-    nome: 'Espelho com Armário',
+    nome: 'Fritadeira a Ar',
     valor: 699,
-    imagem: 'https://picsum.photos/300/200?random=69',
+    imagem: 'https://m.media-amazon.com/images/I/51wwp25UBVL._AC_SL1000_.jpg',
     comprado: false
   },
   {
     id: 70,
-    nome: 'Armário Multiuso',
-    valor: 799,
-    imagem: 'https://picsum.photos/300/200?random=70',
+    nome: 'Kit Prateleiras',
+    valor: 699,
+    imagem: 'https://m.media-amazon.com/images/I/61M1M2ChwnL._AC_SL1200_.jpg',
     comprado: false
   },
   {
     id: 71,
-    nome: 'Kit Estantes e Prateleiras',
-    valor: 599,
-    imagem: 'https://picsum.photos/300/200?random=71',
+    nome: 'Cadeira Escritório',
+    valor: 1400,
+    imagem: 'https://m.media-amazon.com/images/I/41I3Eaax9aL._AC_.jpg',
     comprado: false
   },
   {
     id: 72,
-    nome: 'Mesa e Cadeiras de Varanda',
-    valor: 1499,
-    imagem: 'https://picsum.photos/300/200?random=72',
+    nome: 'Celular novo',
+    valor: 4000,
+    imagem: 'https://www.amazon.com.br/Smartphone-Samsung-Galaxy-256GB-Infinita/dp/B0CBCP5ZWC/ref=sr_1_7?__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3K6QHNT2JNVKT&dib=eyJ2IjoiMSJ9.VXxD3euS8enk52qej8_FDam7TwWHZywOv0vIncIyfbxLCJn5UfwRXlvNklZZWipmggjE1t87RsPUwKUTPS4_U3TNexv5RTERyJ0eZdJ8YVQM6_UWA-pHFqTBBXu-sKcGthcnuqCSn6OkEsihxtfsrHJIfsSj0w0-RTlj1cOc_nzx-KkGNOK85q173T3ivaTvnwi_OvwvmeZqaQP67-Xx6giRion8YqXSqdTVaaxdHByUj-lnKJET50F0acYitYHqR0VRctnIjvyDbkWxjmqjaVlnXGahT_NNQ0PyrBLUG5I.F4TAC1R94bRE9Iu1hRfjwTjV9qsf1jRiTBrSfUBjO-o&dib_tag=se&keywords=galaxy+s23&qid=1734453624&sprefix=galaxy+s2%2Caps%2C258&sr=8-7',
     comprado: false
   },
-  {
-    id: 73,
-    nome: 'Kit Espreguiçadeiras',
-    valor: 999,
-    imagem: 'https://picsum.photos/300/200?random=73',
-    comprado: false
-  },
-  {
-    id: 74,
-    nome: 'Churrasqueira Elétrica',
-    valor: 799,
-    imagem: 'https://picsum.photos/300/200?random=74',
-    comprado: false
-  },
-  {
-    id: 75,
-    nome: 'Churrasqueira a Carvão',
-    valor: 999,
-    imagem: 'https://picsum.photos/300/200?random=75',
-    comprado: false
-  },
-  {
-    id: 76,
-    nome: 'Ombrelone',
-    valor: 599,
-    imagem: 'https://picsum.photos/300/200?random=76',
-    comprado: false
-  },
-  {
-    id: 77,
-    nome: 'Pergolado',
-    valor: 1999,
-    imagem: 'https://picsum.photos/300/200?random=77',
-    comprado: false
-  },
-  {
-    id: 78,
-    nome: 'Guarda-roupas Quarto Extra',
-    valor: 1999,
-    imagem: 'https://picsum.photos/300/200?random=78',
-    comprado: false
-  },
-  {
-    id: 79,
-    nome: 'Escrivaninha Home Office',
-    valor: 799,
-    imagem: 'https://picsum.photos/300/200?random=79',
-    comprado: false
-  },
-  {
-    id: 80,
-    nome: 'Estante para Livros',
-    valor: 899,
-    imagem: 'https://picsum.photos/300/200?random=80',
-    comprado: false
-  },
-  {
-    id: 81,
-    nome: 'Kit Quadros Decorativos',
-    valor: 499,
-    imagem: 'https://picsum.photos/300/200?random=81',
-    comprado: false
-  },
-  {
-    id: 82,
-    nome: 'Climatizador',
-    valor: 699,
-    imagem: 'https://picsum.photos/300/200?random=82',
-    comprado: false
-  },
-  {
-    id: 83,
-    nome: 'Kit Organizadores de Gaveta',
-    valor: 199,
-    imagem: 'https://picsum.photos/300/200?random=83',
-    comprado: false
-  },
-  {
-    id: 84,
-    nome: 'Kit Organizadores de Armário',
-    valor: 249,
-    imagem: 'https://picsum.photos/300/200?random=84',
-    comprado: false
-  },
-  {
-    id: 85,
-    nome: 'Kit Organizadores de Sapato',
-    valor: 199,
-    imagem: 'https://picsum.photos/300/200?random=85',
-    comprado: false
-  },
-  {
-    id: 86,
-    nome: 'Kit Cabides',
-    valor: 149,
-    imagem: 'https://picsum.photos/300/200?random=86',
-    comprado: false
-  },
-  {
-    id: 87,
-    nome: 'Kit Porta Joias',
-    valor: 199,
-    imagem: 'https://picsum.photos/300/200?random=87',
-    comprado: false
-  },
-  {
-    id: 88,
-    nome: 'Kit Porta Maquiagem',
-    valor: 249,
-    imagem: 'https://picsum.photos/300/200?random=88',
-    comprado: false
-  },
-  {
-    id: 89,
-    nome: 'Kit Porta Temperos',
-    valor: 199,
-    imagem: 'https://picsum.photos/300/200?random=89',
-    comprado: false
-  },
-  {
-    id: 90,
-    nome: 'Kit Porta Condimentos',
-    valor: 179,
-    imagem: 'https://picsum.photos/300/200?random=90',
-    comprado: false
-  },
-  {
-    id: 91,
-    nome: 'Kit Porta Talheres',
-    valor: 149,
-    imagem: 'https://picsum.photos/300/200?random=91',
-    comprado: false
-  },
-  {
-    id: 92,
-    nome: 'Kit Porta Pratos',
-    valor: 199,
-    imagem: 'https://picsum.photos/300/200?random=92',
-    comprado: false
-  },
-  {
-    id: 93,
-    nome: 'Kit Porta Copos',
-    valor: 149,
-    imagem: 'https://picsum.photos/300/200?random=93',
-    comprado: false
-  },
-  {
-    id: 94,
-    nome: 'Kit Porta Guardanapos',
-    valor: 99,
-    imagem: 'https://picsum.photos/300/200?random=94',
-    comprado: false
-  },
-  {
-    id: 95,
-    nome: 'Kit Porta Pães',
-    valor: 149,
-    imagem: 'https://picsum.photos/300/200?random=95',
-    comprado: false
-  },
-  {
-    id: 96,
-    nome: 'Kit Porta Frutas',
-    valor: 199,
-    imagem: 'https://picsum.photos/300/200?random=96',
-    comprado: false
-  }
 ]))
 
 localStorage.setItem('presentes', JSON.stringify(presentes.value))
@@ -1253,13 +1075,33 @@ const voltarAoTopo = () => {
 const paginaAtual = ref(0)
 const itensPorPagina = 9
 
+const termoPesquisa = ref('')
+
 const presentesPaginados = computed(() => {
+  let presentesFiltrados = presentes.value
+  
+  if (termoPesquisa.value) {
+    const termo = removerAcentos(termoPesquisa.value.toLowerCase())
+    presentesFiltrados = presentes.value.filter(presente => 
+      removerAcentos(presente.nome.toLowerCase()).includes(termo)
+    )
+  }
+  
   const start = paginaAtual.value * itensPorPagina
   const end = start + itensPorPagina
-  return presentes.value.slice(start, end)
+  return presentesFiltrados.slice(start, end)
 })
 
-const totalPaginas = computed(() => Math.ceil(presentes.value.length / itensPorPagina))
+const totalPaginas = computed(() => {
+  let presentesFiltrados = presentes.value
+  if (termoPesquisa.value) {
+    const termo = removerAcentos(termoPesquisa.value.toLowerCase())
+    presentesFiltrados = presentes.value.filter(presente => 
+      removerAcentos(presente.nome.toLowerCase()).includes(termo)
+    )
+  }
+  return Math.ceil(presentesFiltrados.length / itensPorPagina)
+})
 
 const proximaPagina = () => {
   if (paginaAtual.value < totalPaginas.value - 1) {
@@ -1288,6 +1130,14 @@ const screenWidth = ref(window.innerWidth)
 const updateScreenWidth = () => {
   screenWidth.value = window.innerWidth
 }
+
+const removerAcentos = (texto) => {
+  return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+}
+
+watch(termoPesquisa, () => {
+  paginaAtual.value = 0
+})
 
 onMounted(() => {
   window.addEventListener('resize', updateScreenWidth)
@@ -1422,6 +1272,14 @@ html {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.card-img-top {
+  width: 100%;
+  height: 250px; 
+  object-fit: contain; 
+  padding: 20px; 
+  background-color: #fff;
+}
+
 .card:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
@@ -1530,5 +1388,22 @@ html {
 
 .bi {
   font-size: 1.5rem;
+}
+
+.search-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.search-input {
+  padding: 10px 15px;
+  font-size: 1.1rem;
+  border-radius: 25px;
+  border: 2px solid #ddd;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: var(--primary-color);
 }
 </style>
