@@ -334,8 +334,8 @@
           <div class="alert alert-info m-4">
             <small>
               <i class="bi bi-info-circle"></i>
-              Após finalizar o pagamento, por gentileza, entre em contato com os noivos (Juliana ou Natã) para informar
-              qual presente você escolheu. Assim poderemos agradecer pessoalmente! 💝
+              Após finalizar o pagamento, por gentileza, entre em contato com os noivos <strong>(Juliana ou Natã)</strong> para informar
+              qual presente você escolheu. Assim, eles poderão agradecer a sua generosidade! 💝
             </small>
           </div>
           <div class="modal-body">
