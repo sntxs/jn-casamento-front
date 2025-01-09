@@ -124,15 +124,11 @@
     <section id="presentes" class="presentes py-5">
       <div class="container">
         <h2 class="text-center mb-5">Presentes que podem nos dar</h2>
-        
+
         <!-- Adicione o campo de pesquisa -->
         <div class="search-container mb-4">
-          <input 
-            type="text" 
-            class="form-control search-input" 
-            placeholder="Pesquisar presente..." 
-            v-model="termoPesquisa"
-          >
+          <input type="text" class="form-control search-input" placeholder="Pesquisar presente..."
+            v-model="termoPesquisa">
         </div>
 
         <div class="text-center mt-4">
@@ -333,6 +329,14 @@
           <div class="modal-header">
             <h5 class="modal-title">Escolha a forma de pagamento</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <!-- Novo aviso -->
+          <div class="alert alert-info m-4">
+            <small>
+              <i class="bi bi-info-circle"></i>
+              Após finalizar o pagamento, por gentileza, entre em contato com os noivos (Juliana ou Natã) para informar
+              qual presente você escolheu. Assim poderemos agradecer pessoalmente! 💝
+            </small>
           </div>
           <div class="modal-body">
             <h6>{{ presenteSelecionado?.nome }}</h6>
@@ -611,7 +615,7 @@ const presentes = ref(shuffle([
     id: 35,
     nome: 'Ferro de Passar Roupa',
     valor: 380,
-    imagem: 'https://m.media-amazon.com/images/I/61G0nm+-tuL._AC_SL1500_.jpg',
+    imagem: 'https://m.media-amazon.com/images/I/71uCZqf36hL._AC_SL1500_.jpg',
     comprado: false
   },
   {
@@ -826,32 +830,19 @@ const presentes = ref(shuffle([
   },
   {
     id: 69,
-    nome: 'Fritadeira a Ar',
-    valor: 699,
-    imagem: 'https://m.media-amazon.com/images/I/51wwp25UBVL._AC_SL1000_.jpg',
-    comprado: false
-  },
-  {
-    id: 70,
     nome: 'Kit Prateleiras',
     valor: 699,
     imagem: 'https://m.media-amazon.com/images/I/61M1M2ChwnL._AC_SL1200_.jpg',
     comprado: false
   },
   {
-    id: 71,
+    id: 70,
     nome: 'Cadeira Escritório',
     valor: 1400,
     imagem: 'https://m.media-amazon.com/images/I/41I3Eaax9aL._AC_.jpg',
     comprado: false
   },
-  {
-    id: 72,
-    nome: 'Celular',
-    valor: 4000,
-    imagem: 'https://m.media-amazon.com/images/I/51LrNKMk9dL._AC_SL1000_.jpg',
-    comprado: false
-  },
+
 ]))
 
 localStorage.setItem('presentes', JSON.stringify(presentes.value))
@@ -1079,14 +1070,14 @@ const termoPesquisa = ref('')
 
 const presentesPaginados = computed(() => {
   let presentesFiltrados = presentes.value
-  
+
   if (termoPesquisa.value) {
     const termo = removerAcentos(termoPesquisa.value.toLowerCase())
-    presentesFiltrados = presentes.value.filter(presente => 
+    presentesFiltrados = presentes.value.filter(presente =>
       removerAcentos(presente.nome.toLowerCase()).includes(termo)
     )
   }
-  
+
   const start = paginaAtual.value * itensPorPagina
   const end = start + itensPorPagina
   return presentesFiltrados.slice(start, end)
@@ -1096,7 +1087,7 @@ const totalPaginas = computed(() => {
   let presentesFiltrados = presentes.value
   if (termoPesquisa.value) {
     const termo = removerAcentos(termoPesquisa.value.toLowerCase())
-    presentesFiltrados = presentes.value.filter(presente => 
+    presentesFiltrados = presentes.value.filter(presente =>
       removerAcentos(presente.nome.toLowerCase()).includes(termo)
     )
   }
@@ -1274,9 +1265,9 @@ html {
 
 .card-img-top {
   width: 100%;
-  height: 250px; 
-  object-fit: contain; 
-  padding: 20px; 
+  height: 250px;
+  object-fit: contain;
+  padding: 20px;
   background-color: #fff;
 }
 
