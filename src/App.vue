@@ -410,8 +410,8 @@ const presentes = ref(shuffle([
   },
   {
     id: 6,
-    nome: 'Colchão Box Casal King Size',
-    valor: 5000,
+    nome: 'Cama Box Queen Size',
+    valor: 4000,
     imagem: 'https://imgs.casasbahia.com.br/55060577/1g.jpg',
     comprado: false
   },
