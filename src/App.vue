@@ -411,7 +411,7 @@ const presentes = ref(shuffle([
   {
     id: 6,
     nome: 'Cama Box Queen Size',
-    valor: 3500,
+    valor: 2599,
     imagem: 'https://imgs.casasbahia.com.br/55060577/1g.jpg',
     comprado: false
   },
@@ -425,14 +425,14 @@ const presentes = ref(shuffle([
   {
     id: 8,
     nome: 'Painel de TV Branco com Madeira Clara',
-    valor: 1300,
+    valor: 1099,
     imagem: 'https://static.mobly.com.br/r/2000x2000/p/Modern-Painel-para-TV-atC3A9-60-Polegadas-Roma-Branco-e-Cedro-6709-5708521-1.jpg?_gl=1*1y2kpgz*_gcl_aw*R0NMLjE3MzQ0NDgzMzguQ2p3S0NBaUEzNFM3QmhBdEVpd0FDWnp2NFZrSDgyNXJHRDJBS19qaUs4TVk5NmhSY0dVaVp1UE1yd3Q0RGV4NnAtQ3k3WjFnZkY1c1F4b0NfZjBRQXZEX0J3RQ..*_gcl_au*MTMwNjI0ODMxMy4xNzM0NDQ4MzEy*_ga*MTg4NjE0MTkzMi4xNzM0NDQ4MzEw*_ga_52S02DHY6L*MTczNDQ0ODMxMC4xLjEuMTczNDQ0ODQwMS41OS4wLjA.',
     comprado: false
   },
   {
     id: 9,
     nome: 'Batedeira',
-    valor: 350,
+    valor: 249,
     imagem: 'https://a-static.mlcdn.com.br/1500x1500/batedeira-planetaria-mondial-preto-e-inox-700w-premium-12-velocidades/magazineluiza/021259300/69394484e36b1df50d18ce8ee8deac76.jpg',
     comprado: false
   },
