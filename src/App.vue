@@ -450,13 +450,13 @@ const presentes = ref(shuffle([
     imagem: 'https://m.media-amazon.com/images/I/51pdYg3ULPL._AC_SL1000_.jpg',
     comprado: false
   },
-  {
+/*   {
     id: 12,
     nome: 'Jogo de Panelas',
     valor: 500,
     imagem: 'https://m.media-amazon.com/images/I/61AjgTFEaRL._AC_SL1000_.jpg',
     comprado: false
-  },
+  }, */
   {
     id: 13,
     nome: 'Panela de Pressão',
@@ -667,13 +667,13 @@ const presentes = ref(shuffle([
     imagem: 'https://m.media-amazon.com/images/I/41AwRmHGdgL._AC_SL1000_.jpg',
     comprado: false
   },
-  {
+/*   {
     id: 44,
     nome: 'Máquina Lava e Seca',
     valor: 3100,
     imagem: 'https://m.media-amazon.com/images/I/51c2OEek8yL._AC_SL1000_.jpg',
     comprado: false
-  },
+  }, */
   {
     id: 46,
     nome: 'Lava-louças',
