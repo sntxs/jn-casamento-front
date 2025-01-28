@@ -429,27 +429,27 @@ const presentes = ref(shuffle([
     imagem: 'https://static.mobly.com.br/r/2000x2000/p/Modern-Painel-para-TV-atC3A9-60-Polegadas-Roma-Branco-e-Cedro-6709-5708521-1.jpg?_gl=1*1y2kpgz*_gcl_aw*R0NMLjE3MzQ0NDgzMzguQ2p3S0NBaUEzNFM3QmhBdEVpd0FDWnp2NFZrSDgyNXJHRDJBS19qaUs4TVk5NmhSY0dVaVp1UE1yd3Q0RGV4NnAtQ3k3WjFnZkY1c1F4b0NfZjBRQXZEX0J3RQ..*_gcl_au*MTMwNjI0ODMxMy4xNzM0NDQ4MzEy*_ga*MTg4NjE0MTkzMi4xNzM0NDQ4MzEw*_ga_52S02DHY6L*MTczNDQ0ODMxMC4xLjEuMTczNDQ0ODQwMS41OS4wLjA.',
     comprado: false
   },
-  {
+/*   {
     id: 9,
     nome: 'Batedeira',
     valor: 249,
     imagem: 'https://a-static.mlcdn.com.br/1500x1500/batedeira-planetaria-mondial-preto-e-inox-700w-premium-12-velocidades/magazineluiza/021259300/69394484e36b1df50d18ce8ee8deac76.jpg',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 10,
     nome: 'Liquidificador',
     valor: 210,
     imagem: 'https://noivos.casar.com/img/presentes/shopping-camicado/Liquidificador_Super_Chef.jpg',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 11,
     nome: 'Mixer',
     valor: 250,
     imagem: 'https://m.media-amazon.com/images/I/51pdYg3ULPL._AC_SL1000_.jpg',
     comprado: false
-  },
+  }, */
 /*   {
     id: 12,
     nome: 'Jogo de Panelas',
@@ -457,20 +457,20 @@ const presentes = ref(shuffle([
     imagem: 'https://m.media-amazon.com/images/I/61AjgTFEaRL._AC_SL1000_.jpg',
     comprado: false
   }, */
-  {
+/*   {
     id: 13,
     nome: 'Panela de Pressão',
     valor: 210,
     imagem: 'https://brinox.vteximg.com.br/arquivos/ids/276516-1200-800/nova-foto-panela-de-pressao-botanika.png?v=638666680127930000',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 14,
     nome: 'Panela de Arroz Elétrica',
     valor: 220,
     imagem: 'https://imgs.casasbahia.com.br/55066647/1g.jpg',
     comprado: false
-  },
+  }, */
   {
     id: 15,
     nome: 'Faqueiro Completo',
@@ -492,20 +492,20 @@ const presentes = ref(shuffle([
     imagem: 'https://imgs.extra.com.br/1563534874/1xg.jpg',
     comprado: false
   },
-  {
+/*   {
     id: 18,
     nome: 'Cafeteira',
     valor: 280,
     imagem: 'https://m.media-amazon.com/images/I/51rsO-NkHVL._AC_SL1000_.jpg',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 19,
     nome: 'Torradeira',
     valor: 220,
     imagem: 'https://m.media-amazon.com/images/I/51pcpIXaj0L._AC_SL1000_.jpg',
     comprado: false
-  },
+  }, */
   {
     id: 20,
     nome: 'Air Fryer',
@@ -513,13 +513,13 @@ const presentes = ref(shuffle([
     imagem: 'https://m.media-amazon.com/images/I/81DHdkzgECL._AC_SL1500_.jpg',
     comprado: false
   },
-  {
+/*   {
     id: 21,
     nome: 'Kit Potes Herméticos',
     valor: 190,
     imagem: 'https://m.media-amazon.com/images/I/71GkZaavtPL._AC_SL1200_.jpg',
     comprado: false
-  },
+  }, */
   {
     id: 22,
     nome: 'Aparelho de Jantar Formal',
@@ -527,28 +527,28 @@ const presentes = ref(shuffle([
     imagem: 'https://m.media-amazon.com/images/I/81m1ryjy2xL._AC_SL1500_.jpg',
     comprado: false
   },
-  {
+/*   {
     id: 23,
     nome: 'Kit Sousplat e Jogos Americanos',
     valor: 90,
     imagem: 'https://m.media-amazon.com/images/I/716vXxvmvkL._AC_SL1200_.jpg',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 24,
     nome: 'Jogo de Taças',
     valor: 140,
     imagem: 'https://m.media-amazon.com/images/I/51CCynfziUL._AC_SL1300_.jpg',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 25,
     nome: 'Jogo de Travessas',
     valor: 169,
     imagem: 'https://m.media-amazon.com/images/I/51wQ2UujUnL._AC_SL1000_.jpg',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 26,
     nome: 'Kit Almofadas Decorativas',
     valor: 99,
@@ -561,7 +561,7 @@ const presentes = ref(shuffle([
     valor: 169,
     imagem: 'https://m.media-amazon.com/images/I/71ArJQncJfL._AC_SL1200_.jpg',
     comprado: false
-  },
+  }, */
   {
     id: 28,
     nome: 'Jogo de Cama Completo',
@@ -569,14 +569,14 @@ const presentes = ref(shuffle([
     imagem: 'https://m.media-amazon.com/images/I/31TgkyHJ3aL._AC_.jpg',
     comprado: false
   },
-  {
+/*   {
     id: 29,
     nome: 'Kit Travesseiros',
     valor: 180,
     imagem: 'https://m.media-amazon.com/images/I/51g1PznpAdL._AC_SL1200_.jpg',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 30,
     nome: 'Kit Roupões de Banho',
     valor: 220,
@@ -589,8 +589,8 @@ const presentes = ref(shuffle([
     valor: 169,
     imagem: 'https://m.media-amazon.com/images/I/71oAKOMXPHL._AC_SL1200_.jpg',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 32,
     nome: 'Kit Tapetes para Banheiro',
     valor: 99,
@@ -603,8 +603,8 @@ const presentes = ref(shuffle([
     valor: 100,
     imagem: 'https://m.media-amazon.com/images/I/61Ku1AabY7L._AC_SL1200_.jpg',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 34,
     nome: 'Tábua de Passar',
     valor: 169,
@@ -617,8 +617,8 @@ const presentes = ref(shuffle([
     valor: 180,
     imagem: 'https://m.media-amazon.com/images/I/71uCZqf36hL._AC_SL1500_.jpg',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 36,
     nome: 'Aspirador de Pó',
     valor: 279,
@@ -631,7 +631,7 @@ const presentes = ref(shuffle([
     valor: 240,
     imagem: 'https://m.media-amazon.com/images/I/41mDrX7RDOL._AC_SL1000_.jpg',
     comprado: false
-  },
+  }, */
   {
     id: 39,
     nome: 'Kit Malas de Viagem',
@@ -639,7 +639,7 @@ const presentes = ref(shuffle([
     imagem: 'https://m.media-amazon.com/images/I/51uIj-rr4tL._AC_SL1000_.jpg',
     comprado: false
   },
-  {
+/*   {
     id: 40,
     nome: 'Kit Utensílios para Churrasco',
     valor: 189,
@@ -652,14 +652,14 @@ const presentes = ref(shuffle([
     valor: 259,
     imagem: 'https://m.media-amazon.com/images/I/81NzamswRGL._AC_SL1500_.jpg',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 42,
     nome: 'Kit Vasos Decorativos',
     valor: 119,
     imagem: 'https://m.media-amazon.com/images/I/51x2HiSuBfL._AC_SL1200_.jpg',
     comprado: false
-  },
+  }, */
   {
     id: 43,
     nome: 'Micro-ondas',
@@ -681,20 +681,20 @@ const presentes = ref(shuffle([
     imagem: 'https://m.media-amazon.com/images/I/41nJML+uGVL._AC_SL1000_.jpg',
     comprado: false
   },
-  {
+/*   {
     id: 47,
     nome: 'Poltrona Decorativa',
     valor: 279,
     imagem: 'https://m.media-amazon.com/images/I/51jB6JHIdLL._AC_SL1000_.jpg',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 48,
     nome: 'Mesa de Centro',
     valor: 210,
     imagem: 'https://m.media-amazon.com/images/I/61g5rHAHkJL._AC_SL1000_.jpg',
     comprado: false
-  },
+  }, */
   {
     id: 49,
     nome: 'Mesa de Jantar com Cadeiras',
@@ -726,7 +726,7 @@ const presentes = ref(shuffle([
   {
     id: 53,
     nome: 'Kit Criados-mudos',
-    valor: 299,
+    valor: 349,
     imagem: 'https://m.media-amazon.com/images/I/61qnNqfN4dL._AC_SL1200_.jpg',
     comprado: false
   },
@@ -751,20 +751,20 @@ const presentes = ref(shuffle([
     imagem: 'https://m.media-amazon.com/images/I/61lKu9lwRoL._AC_SL1000_.jpg',
     comprado: false
   },
-  {
+/*   {
     id: 57,
     nome: 'Armário Multiuso',
     valor: 200,
     imagem: 'https://m.media-amazon.com/images/I/41yO6wzapWL._AC_SL1024_.jpg',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 58,
     nome: 'Kit Estantes',
     valor: 179,
     imagem: 'https://m.media-amazon.com/images/I/71ydkq07auL._AC_SL1000_.jpg',
     comprado: false
-  },
+  }, */
   {
     id: 59,
     nome: 'Mesa e Cadeiras de Varanda',
@@ -775,7 +775,7 @@ const presentes = ref(shuffle([
   {
     id: 61,
     nome: 'Churrasqueira a Carvão',
-    valor: 279,
+    valor: 369,
     imagem: 'https://m.media-amazon.com/images/I/61TGo6xPLdL._AC_SL1200_.jpg',
     comprado: false
   },
@@ -796,45 +796,45 @@ const presentes = ref(shuffle([
   {
     id: 64,
     nome: 'Ventilador',
-    valor: 179,
+    valor: 389,
     imagem: 'https://m.media-amazon.com/images/I/51rACDpWe8L._AC_SL1000_.jpg',
     comprado: false
   },
-  {
+/*   {
     id: 65,
     nome: 'Kit Porta Temperos',
     valor: 49,
     imagem: 'https://m.media-amazon.com/images/I/61OG7XRQh5L._AC_SL1200_.jpg',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 66,
     nome: 'Kit Porta Copos',
     valor: 69,
     imagem: 'https://m.media-amazon.com/images/I/61O60QJbRzL._AC_.jpg',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 67,
     nome: 'Kit Porta Guardanapos',
     valor: 79,
     imagem: 'https://m.media-amazon.com/images/I/61Kvtw5oOkS._AC_SL1000_.jpg',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 68,
     nome: 'Jogo de Tigelas',
     valor: 119,
     imagem: 'https://m.media-amazon.com/images/I/51hoeyPpjuL._AC_SL1200_.jpg',
     comprado: false
-  },
-  {
+  }, */
+/*   {
     id: 69,
     nome: 'Kit Prateleiras',
     valor: 169,
     imagem: 'https://m.media-amazon.com/images/I/61M1M2ChwnL._AC_SL1200_.jpg',
     comprado: false
-  },
+  }, */
   {
     id: 70,
     nome: 'Cadeira Escritório',
