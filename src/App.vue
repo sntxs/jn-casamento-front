@@ -482,7 +482,7 @@ const presentes = ref(shuffle([
   {
     id: 16,
     nome: 'Conjunto de Pratos e Talheres',
-    valor: 250,
+    valor: 320,
     imagem: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTtnq5GQeXBAK9kEV1SyoddhMYgPeAagNS_YZkS4W9CQg-c0ThT6USRD2N_BqjAycuPKaXHDwiYYy3m9MZ8k1X4WWIbiXXve1Wm5CLOXqI0qGT6Uyq3NaIx&usqp=CAE',
     comprado: false
   },
