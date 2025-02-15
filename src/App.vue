@@ -176,6 +176,8 @@
           <div class="modal-body text-center">
             <h6>{{ presenteSelecionado?.nome }}</h6>
             <p class="text-muted">Valor: R$ {{ presenteSelecionado?.valor }}</p>
+            <p class="text-muted">obs: caso não consigam efetuar o pix pelo qr code, você pode nos enviar um pix no
+              email <strong>presentesjn1502@gmail.com</strong> com a descrição do presente escolhido.</p>
 
             <!-- Loading -->
             <div v-if="carregandoPix" class="text-center my-4">
@@ -409,13 +411,13 @@ const presentes = ref(shuffle([
     imagem: 'https://m.media-amazon.com/images/I/51Ap48E9JDL._AC_SL1000_.jpg',
     comprado: false
   },
-/*   {
-    id: 6,
-    nome: 'Cama Box Queen Size',
-    valor: 2599,
-    imagem: 'https://imgs.casasbahia.com.br/55060577/1g.jpg',
-    comprado: false
-  }, */
+  /*   {
+      id: 6,
+      nome: 'Cama Box Queen Size',
+      valor: 2599,
+      imagem: 'https://imgs.casasbahia.com.br/55060577/1g.jpg',
+      comprado: false
+    }, */
   {
     id: 7,
     nome: 'Sofá Retrátil 3 Lugares Bege',
